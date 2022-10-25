@@ -1,0 +1,57 @@
+1.) create test cases for the program described below then push to github
+2.) create a flowchart or pseudocode for the program described below then push to github
+3.) write the code for the program described below then push to github
+
+
+*******NOTE for TEST CASES:*********
+For this assignment there will not be an autograder for the test cases.   We still are expecting that you create the test cases first, however you do not need to write
+them in the normal format (you can still use the i: and o: format if you would like to).
+
+instead you could just list out the different cases that you will need to be sure work for example (or any other format that shows you thought of the things to test):
+
+1: input of 7,-1 or words leads to : Not a valid column #, enter a number between 0 and 6 and allows the player to enter a number again
+2: if column 2 is full and 2 is entered :  Invalid move. Please try again
+3: 4 piece in a row (horizontal) is added :  Win message and end game
+
+******NOTE for the CODE************
+This assignment will have some hidden tests so in order to get full credit for the assignment make sure you come up with test cases your self and use those
+test cases to verify that your program works.  There is also going to be a 10 submission limit to Code Grade for this assignment.
+
+
+***********Description of the Program*************
+
+For this Assignment you are going to create a 2 player text version of Connect 4. 
+There are 2 players:  (Black and Red) Black will be the first player and represented by a "b" and Red will be player2 and represented by an "r" 
+empty spaces are represented by an "o"
+
+Rules of Connect4 -
+players take turns on each turn the player puts a piece in one of the columns, when a piece is put in a column it always falls down to the bottom most 
+empty space in the column.  When ever someone places a piece that causes there to be 4 in a row  (horizontal, vertical, or diagonal) the game ends and
+that player is the winner.  If all the spaces are filled the game is a tie.
+
+
+Requirements for program:
+For each turn the program should print the "board" and then the prompt indicating the turn and what the player should enter
+the program should get the player's input and if it is valid add the piece to the correct location check to see if they won and if not switch to the 
+other player's turn.   If invalid information is entered print the appropriate error message and allow the player to enter an input again
+(only switches when valid move is made)
+
+You must use this format below for the turns:
+
+o o o o o o o 
+o o o o o o o 
+o o o o o o o 
+o o o o o o o 
+o o o o o o o 
+o o o o o o o 
+
+Black's turn - Enter column # to add piece (0-6)
+
+
+Prompts to use:
+if an input is not a number or outside valid range print: "Not a valid column #, enter a number between 0 and 6" then let them enter a number again
+if an input is valid range but invalid due to the column being full print: "Invalid move. Please try again" then let them enter a number again
+when a player wins print: "Black won the game"  or "Red won the game" depending on who won, and end the program.
+if the game ends in a tie print: "Tie game" and end the program.
+
+
