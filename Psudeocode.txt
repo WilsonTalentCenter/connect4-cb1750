@@ -1,0 +1,13 @@
+//Game starts by outputting an empty board and asks the black user to enter a column #
+//If column number is invalid or not a number
+	//Ask for another, valid input on a loop until one is entered
+	//If column is full
+		//Ask user for a valid input until one is entered again
+//After completed turn the user switches as well as the symbol
+//Program checks if connect 4 or tie conditions are met
+//Programs outputs updated gameboard and prints whoevers turn it now is
+//Repeats the input getting and gameboard updating sequence 
+//If connect 4 in any direction
+	//End the game and display who won
+//If all columns are full with no connect 4
+	//End game and display there was a tie
