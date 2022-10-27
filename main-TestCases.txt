@@ -1,0 +1,22 @@
+//Invalid Column Input Test
+ input of 7,-1 or words leads to : Not a valid column #, 
+ enter a number between 0 and 6 and allows the player to enter a number again
+
+//Full row test
+if column 2 is full and 2 is entered :  Invalid move. Please try again
+//Win condition is met test
+4 piece in a row (horizontal) is added :  Win message and end game
+
+//Basic functionality test
+if user inputs a valid column that columns lowest point is updated to a "b" or "r"
+programs changes the turn and then prompts the other user to input a column
+does this until game is ended either by tie or by connect 4
+
+//Game ends in draw test
+if all columns are full of piece and no 4 of the same color are connected,
+end game and print tie message
+
+//Correct turn change test
+If invalid input is entered, the correct user is prompted to enter another input 
+and the turns do not change until valid input is entered
+
