@@ -4,22 +4,23 @@ public class Main {
 static Scanner scan = new Scanner(System.in);
 static String[][] gameBoard = new String[6][7];
 static String playerTurn = "Black's";
-static String columnInput;
+
     public static void main(String[] args) {
         for (int rowIndex = 0; rowIndex < gameBoard.length; rowIndex ++) {
             for (int colIndex = 0; colIndex  < gameBoard[rowIndex].length; colIndex ++) {
-                gameBoard[rowIndex][colIndex]="O";
+                gameBoard[rowIndex][colIndex]="o";
             }
         }
         while(true) {
 
-            gameBoardController(playerTurn);
-            endgameCheck();
+            gameBoardController();
+
+
 
         }
 
     }
-    static void gameBoardController(String playerTurn){
+    static void gameBoardController(){
         for (int rowIndex = 0; rowIndex < gameBoard.length; rowIndex ++) {
             for (int colIndex = 0; colIndex  < gameBoard[rowIndex].length; colIndex ++) {
                 System.out.print(gameBoard[rowIndex ][colIndex] + " ");
@@ -32,58 +33,66 @@ static String columnInput;
                 columnInput.equals("3")||columnInput.equals("4")|| columnInput.equals("5")|| columnInput.equals("6"))){
             System.out.println("Not a valid column #, enter a number between 0 and 6");
             columnInput = scan.nextLine();
+
+        }
+        while(fullColumnChecker(columnInput)){
+            System.out.println("Invalid move. Please try again");
+            columnInput = scan.nextLine();
+
         }
 
-        fullColumnChecker(columnInput);
         gameBoardAdder(columnInput);
+        endgameCheck(columnInput);
 
 
         if(playerTurn.equalsIgnoreCase("Black's"))
-            playerTurn = "Red's";
+             playerTurn = "Red's";
         else if(playerTurn.equalsIgnoreCase("Red's"))
-            playerTurn = "Black's";
+             playerTurn = "Black's";
 
 
     }
-    static boolean fullColumnChecker(String columnInput){
-        int blankSpaceCount = 0;
-        boolean fullColumn = false;
 
-        for (int rowIndex = Integer.parseInt(columnInput); rowIndex < gameBoard.length;) {
-            for (int colIndex = 0; colIndex  < gameBoard[rowIndex].length; colIndex ++) {
-                if(gameBoard[rowIndex][colIndex].equals("0"))
-                    blankSpaceCount++;
-                if(blankSpaceCount == 6)
-                    fullColumn = true;
+    /**
+     * Checks if a column is filled, assumes taken spaces are all at the bottom
+     * @param columnInput
+     * @return Returns true or false
+     */
+    static boolean fullColumnChecker(String columnInput) {
+        return gameBoard[0][Integer.parseInt(columnInput)].equals("r") || gameBoard[0][Integer.parseInt(columnInput)].equals("b");
+
+
+
+
+    }
+
+    /**
+     * Adds the players piece to the lowest empty point in a column
+     * @param columnInput
+     */
+    static void gameBoardAdder(String columnInput){
+        for (int rowIndex = 5; rowIndex >= 0; rowIndex --){
+            if(gameBoard[rowIndex][Integer.parseInt(columnInput)].equals("o")){
+                if(playerTurn.equals("Red's")) {
+                    gameBoard[rowIndex][Integer.parseInt(columnInput)] = "r";
                     break;
+                }
 
-
-
+                else {
+                    gameBoard[rowIndex][Integer.parseInt(columnInput)] = "b";
+                    break;
                 }
             }
-            return fullColumn;
-
-    }
-    static void gameBoardAdder(String columnInput){
-        int blankSpaceCount = 0;
 
 
-        for (int rowIndex = Integer.parseInt(columnInput); rowIndex < gameBoard.length;) {
-            for (int colIndex = 0; colIndex  < gameBoard[rowIndex].length; colIndex ++) {
-                if(gameBoard[rowIndex][colIndex].equals("0"))
-                    blankSpaceCount++;
-
-
-
-            }
         }
-        gameBoard[Integer.parseInt(columnInput)][blankSpaceCount] = "r";
+
 
 
     }
-    static void endgameCheck(){
-        if(fullColumnChecker(columnInput) == true)
-            System.exit(0);
+    static void endgameCheck(String columnInput){
+        if(fullColumnChecker(columnInput))
+            
 
     }
 
