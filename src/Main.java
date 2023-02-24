@@ -136,7 +136,7 @@ static String playerTurn = "Black's";
             }
         }
         for(int rowIndex = 0; rowIndex < 6; rowIndex++){
-            for(int colIndex = 0; colIndex < 5; colIndex++){
+            for(int colIndex = 0; colIndex < 4; colIndex++){
                 if(gameBoard[rowIndex][colIndex].equals("r")&& gameBoard[rowIndex][colIndex+1].equals("r")
                         &&gameBoard[rowIndex][colIndex+2].equals("r") && gameBoard[rowIndex][colIndex+3].equals("r")){
                     System.out.println("Red won the game");    //Checks for horizontal, red connect 4
@@ -154,12 +154,28 @@ static String playerTurn = "Black's";
             for(int colIndex = 0; colIndex < 4; colIndex++){
                 if(gameBoard[rowIndex][colIndex].equals("r")&&gameBoard[rowIndex-1][colIndex+1].equals("r")
                         &&gameBoard[rowIndex-2][colIndex+2].equals("r")&&gameBoard[rowIndex-3][colIndex+3].equals("r")){
-                    System.out.println("Red won the game");    //Checks for diagonal, red connect 4
+                    System.out.println("Red won the game");    //Checks for positive diagonal, red connect 4
                     System.exit(0);
                 }
                 else if(gameBoard[rowIndex][colIndex].equals("b")&&gameBoard[rowIndex-1][colIndex+1].equals("b")
                         &&gameBoard[rowIndex-2][colIndex+2].equals("b")&&gameBoard[rowIndex-3][colIndex+3].equals("b")){
-                    System.out.println("Black won the game");    //Checks for diagonal, black connect 4
+                    System.out.println("Black won the game");    //Checks for positive diagonal, black connect 4
+                    System.exit(0);
+                }
+
+
+            }
+        }
+        for(int rowIndex = 5; rowIndex > 2; rowIndex--){
+            for(int colIndex = 6; colIndex > 2; colIndex--){
+                if(gameBoard[rowIndex][colIndex].equals("r")&&gameBoard[rowIndex-1][colIndex-1].equals("r")
+                        &&gameBoard[rowIndex-2][colIndex-2].equals("r")&&gameBoard[rowIndex-3][colIndex-3].equals("r")){
+                    System.out.println("Red won the game");    //Checks for negative, diagonal, red connect 4
+                    System.exit(0);
+                }
+                else if(gameBoard[rowIndex][colIndex].equals("b")&&gameBoard[rowIndex-1][colIndex-1].equals("b")
+                        &&gameBoard[rowIndex-2][colIndex-2].equals("b")&&gameBoard[rowIndex-3][colIndex-3].equals("b")){
+                    System.out.println("Black won the game");    //Checks for negative, diagonal, black connect 4
                     System.exit(0);
                 }
 
